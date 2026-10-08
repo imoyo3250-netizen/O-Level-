@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>O-Level Study Hub</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#07111f,#102a43);
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:30px 15px 20px;
+}
+
+header h1{
+    font-size:clamp(30px,8vw,48px);
+    margin-bottom:8px;
+}
+
+header p{
+    color:#cbd5e1;
+    font-size:16px;
+}
+
+/* INSTRUCTIONS */
+.instructions{
+    max-width:900px;
+    margin:10px auto 25px;
+    padding:0 16px;
+}
+
+.instructions-box{
+    background:white;
+    color:#111827;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.3);
+}
+
+.instructions-title{
+    width:100%;
+    border:none;
+    background:#dc2626;
+    color:white;
+    padding:17px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    text-align:center;
+}
+
+.instructions-content{
+    padding:20px;
+    line-height:1.7;
+    font-size:15px;
+}
+
+.instructions-content h3{
+    margin-bottom:10px;
+    color:#b91c1c;
+}
+
+.instructions-content ul{
+    padding-left:22px;
+}
+
+.instructions-content li{
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:15px;
+    padding:13px;
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    border-radius:8px;
+}
+
+.contact{
+    margin-top:15px;
+    padding:13px;
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    border-radius:8px;
+}
+
+.hidden{
+    display:none;
+}
+
+/* MAIN */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:5px 16px 50px;
+}
+
+.choose-title{
+    text-align:center;
+    margin:15px 0 20px;
+    font-size:25px;
+}
+
+/* SUBJECT BUTTONS */
+.subjects{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.subject{
+    border:none;
+    border-radius:18px;
+    padding:25px 15px;
+    min-height:140px;
+    background:white;
+    color:#07111f;
+    box-shadow:0 8px 22px rgba(0,0,0,.25);
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.subject:hover{
+    transform:translateY(-3px);
+}
+
+.subject:active{
+    transform:scale(.97);
+}
+
+.subject span{
+    display:block;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+/* DISCUSSION ROOM */
+.discussion-button{
+    width:100%;
+    margin-top:20px;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    background:#2563eb;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(0,0,0,.25);
+}
+
+.discussion-button:active{
+    transform:scale(.98);
+}
+
+/* TEST AREAS */
+.test-area{
+    margin-top:35px;
+    padding:25px 20px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:20px;
+    scroll-margin-top:15px;
+}
+
+.test-area h2{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.test-area p{
+    color:#dbeafe;
+    line-height:1.6;
+}
+
+.test-placeholder{
+    margin-top:18px;
+    background:rgba(255,255,255,.08);
+    border-radius:12px;
+    padding:15px;
+    color:#cbd5e1;
+}
+
+.back{
+    display:inline-block;
+    margin-top:18px;
+    padding:10px 16px;
+    border-radius:10px;
+    background:white;
+    color:#07111f;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* MOBILE */
+@media(max-width:560px){
+
+    .subjects{
+        grid-template-columns:1fr;
+    }
+
+    .subject{
+        min-height:115px;
+    }
+
+    .instructions-content{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="top">
+
+    <h1>📚 O-Level Study Hub</h1>
+
+    <p>
+        Study resources, revision materials and practice tests
+    </p>
+
+</header>
+
+
+<!-- INSTRUCTIONS -->
+<section class="instructions">
+
+    <div class="instructions-box">
+
+        <button
+            class="instructions-title"
+            onclick="toggleInstructions()"
+        >
+            📖 INSTRUCTIONS
+        </button>
+
+        <div
+            id="instructionsContent"
+            class="instructions-content hidden"
+        >
+
+            <h3>Important Information</h3>
+
+            <ul>
+
+                <li>
+                    This website is intended to help students
+                    revise and practise their O-Level subjects.
+                </li>
+
+                <li>
+                    We have tried to collect as many useful
+                    question papers, revision materials and
+                    practice questions as possible.
+                </li>
+
+                <li>
+                    Questions and materials may come from
+                    different educational sources and past
+                    examination materials.
+                </li>
+
+                <li>
+                    Not all answers or explanations are
+                    guaranteed to be correct. If you notice an
+                    incorrect answer, question or explanation,
+                    please report it so that it can be reviewed.
+                </li>
+
+                <li>
+                    Students are encouraged to compare answers
+                    with their official textbooks, teachers,
+                    examination boards and other reliable
+                    educational sources.
+                </li>
+
+                <li>
+                    These resources are intended as a revision
+                    aid and should not replace teachers,
+                    textbooks or official examination materials.
+                </li>
+
+                <li>
+                    Always read each question carefully before
+                    selecting your answer.
+                </li>
+
+                <li>
+                    Some questions may be taken or adapted from
+                    past papers and other educational resources
+                    for revision purposes.
+                </li>
+
+            </ul>
+
+            <div class="warning">
+
+                <strong>⚠️ Important:</strong><br>
+
+                If you believe that a question or answer is
+                incorrect, please contact us and provide the
+                question number and suspected correction.
+                We will review the information before making
+                changes.
+
+            </div>
+
+            <div class="contact">
+
+                <strong>📩 Contact Us</strong><br>
+
+                Found an incorrect question, answer or
+                explanation? Please contact us so that we can
+                investigate and improve the resource.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<main class="container">
+
+    <h2 class="choose-title">
+        Choose Your Subject
+    </h2>
+
+
+    <!-- SUBJECT BUTTONS -->
+
+    <section class="subjects">
+
+        <button
+            class="subject"
+            onclick="goToSection('maths-tests')"
+        >
+            <span>📐</span>
+            Mathematics
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('biology-tests')"
+        >
+            <span>🧬</span>
+            Biology
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('combined-science-tests')"
+        >
+            <span>🔬</span>
+            Combined Science
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('chemistry-tests')"
+        >
+            <span>⚗️</span>
+            Chemistry
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('physics-tests')"
+        >
+            <span>⚡</span>
+            Physics
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('geography-tests')"
+        >
+            <span>🌍</span>
+            Geography
+        </button>
+
+
+        <button
+            class="subject"
+            onclick="goToSection('history-tests')"
+        >
+            <span>📜</span>
+            History
+        </button>
+
+    </section>
+
+
+    <!-- DISCUSSION ROOM BUTTON -->
+
+    <button
+        class="discussion-button"
+        onclick="discussionRoom()"
+    >
+        💬 Discussion Room
+    </button>
+
+
+    <!-- MATHEMATICS -->
+
+    <section
+        id="maths-tests"
+        class="test-area"
+    >
+
+        <h2>📐 Mathematics Tests</h2>
+
+        <p>
+            Mathematics tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Mathematics tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- BIOLOGY -->
+
+    <section
+        id="biology-tests"
+        class="test-area"
+    >
+
+        <h2>🧬 Biology Tests</h2>
+
+        <p>
+            Biology tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Biology tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- COMBINED SCIENCE -->
+
+    <section
+        id="combined-science-tests"
+        class="test-area"
+    >
+
+        <h2>🔬 Combined Science Tests</h2>
+
+        <p>
+            Combined Science tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Combined Science tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- CHEMISTRY -->
+
+    <section
+        id="chemistry-tests"
+        class="test-area"
+    >
+
+        <h2>⚗️ Chemistry Tests</h2>
+
+        <p>
+            Chemistry tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Chemistry tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- PHYSICS -->
+
+    <section
+        id="physics-tests"
+        class="test-area"
+    >
+
+        <h2>⚡ Physics Tests</h2>
+
+        <p>
+            Physics tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Physics tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- GEOGRAPHY -->
+
+    <section
+        id="geography-tests"
+        class="test-area"
+    >
+
+        <h2>🌍 Geography Tests</h2>
+
+        <p>
+            Geography tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 Geography tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+
+    <!-- HISTORY -->
+
+    <section
+        id="history-tests"
+        class="test-area"
+    >
+
+        <h2>📜 History Tests</h2>
+
+        <p>
+            History tests will be added here.
+        </p>
+
+        <div class="test-placeholder">
+            📚 History tests will appear here.
+        </div>
+
+        <a class="back" href="#top">
+            ↑ Back to Subjects
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    O-Level Study Hub<br>
+    More tests and revision resources will be added.
+
+</footer>
+
+
+<script>
+
+function toggleInstructions(){
+
+    const box =
+        document.getElementById("instructionsContent");
+
+    box.classList.toggle("hidden");
+
+}
+
+
+function goToSection(id){
+
+    const section =
+        document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+
+/* DISCUSSION ROOM - PLACEHOLDER ONLY */
+
+function discussionRoom(){
+
+    alert(
+        "💬 Discussion Room\n\n" +
+        "The discussion rooms will be available soon."
+    );
+
+}
+
+</script>
+
+</body>
+  </html>
